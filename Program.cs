@@ -12,3 +12,13 @@ Directory.CreateDirectory(salesTotalDir);
 var salesFiles = FindFiles.FindFilesJson(storesDirectory); //encontrando todos os arquivos que contém o número de vendas do tipo json
 
 var salesTotal = Calculate.CalculateSalesTotal(salesFiles);// calcula o total das vendas
+
+try
+{
+    File.AppendAllText(Path.Combine(salesTotalDir, "totals.txt"), $"{salesTotal}{Environment.NewLine}"); // adiciona o total calculado no novo arquivo 'totals.txt'
+}
+catch (Exception ex)
+{
+
+    Console.WriteLine($"An error occurred while write file: {ex.Message}");
+}
