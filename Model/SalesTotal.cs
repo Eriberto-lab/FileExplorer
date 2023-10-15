@@ -1,5 +1,5 @@
 
-namespace mslearn_dotnet_files.Models;
+namespace FileExplorer.Model;
 
 public class SalesTotal
 {

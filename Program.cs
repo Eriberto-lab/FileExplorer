@@ -1,6 +1,7 @@
 ﻿
 using FileExplorer.Service;
 
+
 var currentDirectory = Directory.GetCurrentDirectory(); // pega o caminho do diretorio atual
 var storesDirectory = Path.Combine(currentDirectory, "stores"); //  pega o caminho do diretorio de onde esta as vendas
 
@@ -9,3 +10,5 @@ var salesTotalDir = Path.Combine(currentDirectory, "salesTotalDir");// caminho d
 Directory.CreateDirectory(salesTotalDir);
 
 var salesFiles = FindFiles.FindFilesJson(storesDirectory); //encontrando todos os arquivos que contém o número de vendas do tipo json
+
+var salesTotal = Calculate.CalculateSalesTotal(salesFiles);// calcula o total das vendas
