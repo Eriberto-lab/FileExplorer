@@ -10,18 +10,27 @@ public class FindFiles
     {
         List<string> salesFiles = new List<string>();
 
-        var foundFiles = Directory.EnumerateFiles(folderName, "*", SearchOption.AllDirectories);
-
-        foreach (var file in foundFiles)
+        try
         {
-            var extension = Path.GetExtension(file);
+            var foundFiles = Directory.EnumerateFiles(folderName, "*", SearchOption.AllDirectories);//EnumerateFiles cria uma coleção de Enumetable
 
-            if (extension == ".json")
+            foreach (var file in foundFiles)
             {
-                salesFiles.Add(file);
+                var extension = Path.GetExtension(file);
+
+                if (extension == ".json")
+                {
+                    salesFiles.Add(file);
+                }
             }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while searching for files: {ex.Message}");
         }
 
         return salesFiles;
+
+
     }
 }
