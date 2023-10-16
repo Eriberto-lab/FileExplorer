@@ -14,15 +14,11 @@ public class FindFiles
         {
             var foundFiles = Directory.EnumerateFiles(folderName, "*", SearchOption.AllDirectories);//EnumerateFiles cria uma coleção de Enumetable
 
-            foreach (var file in foundFiles)
-            {
-                var extension = Path.GetExtension(file);
+            var jsonFiles = from file in foundFiles
+                            where file.Contains(".json")
+                            select file;
 
-                if (extension == ".json")
-                {
-                    salesFiles.Add(file);
-                }
-            }
+            salesFiles.AddRange(jsonFiles);
         }
         catch (Exception ex)
         {
